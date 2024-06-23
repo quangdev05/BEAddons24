@@ -10,7 +10,6 @@
 - Dễ dàng khởi động lại plugin với lệnh /bea reload.
 - Full toàn quyền chỉnh sửa nằm trong file config.yml.
 - Premium plugin được làm riêng cho PlayST.
-
 ## Hướng dẫn cài:
 - B1. Cài đặt plugin bản mới nhất về.
 - B2. Thả file .jar vào file plugin của server.
