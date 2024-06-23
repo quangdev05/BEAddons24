@@ -6,7 +6,7 @@
 - Website: https://ayo.so/quangdev05
 ## Thông tin:
 - Tùy chỉnh số lần /back của plugin Essentialsx trong một ngày cho rank Luckperm.
-- Sử dụng giờ chuẩn quốc tế +7 của Việt Nam.
+- Sử dụng giờ chuẩn quốc tế +7/Ho Chi Minh của Việt Nam.
 - Dễ dàng khởi động lại plugin với lệnh /bea reload.
 - Full toàn quyền chỉnh sửa nằm trong file config.yml.
 - Premium plugin được làm riêng cho PlayST.
