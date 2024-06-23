@@ -1,4 +1,4 @@
-#BEAddons
+# BEAddons
 ## Thông tin:
 - Tùy chỉnh số lần /back của plugin Essentialsx trong một ngày cho ran Luckperm.
 - Dễ dàng khởi động lại plugin với lệnh /bea reload.
