@@ -1,4 +1,9 @@
-# BEAddons
+# BEAddons:
+- Tác giả: QuangDev05 [GnauQ]
+- Facebook: https://www.facebook.com/quangdev05.2024
+- Discord: quangdev05
+- Discord Community: https://discord.gg/MdgvJnegbM
+- Website: https://ayo.so/quangdev05
 ## Thông tin:
 - Tùy chỉnh số lần /back của plugin Essentialsx trong một ngày cho ran Luckperm.
 - Dễ dàng khởi động lại plugin với lệnh /bea reload.
