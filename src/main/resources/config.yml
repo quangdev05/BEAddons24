@@ -1,0 +1,35 @@
+# ██████╗ ███████╗ █████╗ ██████╗ ██████╗  ██████╗ ███╗   ██╗███████╗
+# ██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔═══██╗████╗  ██║██╔════╝
+# ██████╔╝█████╗  ███████║██║  ██║██║  ██║██║   ██║██╔██╗ ██║███████╗
+# ██╔══██╗██╔══╝  ██╔══██║██║  ██║██║  ██║██║   ██║██║╚██╗██║╚════██║
+# ██████╔╝███████╗██║  ██║██████╔╝██████╔╝╚██████╔╝██║ ╚████║███████║
+# ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+# Premium plugin for PlayST
+
+# Plugin made by QuangDev05
+# Plugin is already at version '${project.version}'
+# Facebook: https://www.facebook.com/quangdev05.2024
+# Discord: quangdev05
+# Discord Community: https://discord.gg/MdgvJnegbM
+# Website: https://ayo.so/quangdev05
+
+# Kiểm tra cập nhật plugin
+update-checker: true
+
+# Đây là plugin premium hoặc plugin bản quyền,
+# Vui lòng nhập Licisen Key để plugin hoạt động.
+license_key: "your_license_key_here"
+
+# Cấu hình số lần /back cho từng rank
+# Premission: backlimit.back-limits (ví dụ: backlimit.default)
+# Plugin chỉ cấu hình tích hợp API với Luckperm, sử dụng plugin rank khác sẽ không hoạt động.
+back-limits:
+  default: 1
+  rank1: 3
+  rank2: 5
+  rank3: 10
+
+# Cấu hình thông báo
+messages:
+  reached_limit: "&cBạn đã đạt đến giới hạn sử dụng lệnh /back."
+  reset_message: "&aGiới hạn sử dụng lệnh /back trong một ngày đã được reset."

@@ -1,0 +1,15 @@
+name: BEAddons24
+version: '${project.version}'
+main: quangdev05.beaddons24.BEAddons24
+prefix: BEAddons24
+load: STARTUP
+authors: [QuangDev05 GnauQ]
+description: Addons EssentialsX tùy chỉnh số lần /back cho mỗi rank Luckperm.
+website: https://ayo.so/quangdev05
+
+commands:
+  bea:
+    description: Reload BEAddons24 config
+    usage: /bea reload
+    permission: bea.reload
+
