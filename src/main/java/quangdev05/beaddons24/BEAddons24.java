@@ -31,8 +31,6 @@ public class BEAddons24 extends JavaPlugin {
     private FileConfiguration config;
     private String licenseKey;
     private boolean isLicenseValid = false;
-    private static final String VERSION_CHECK_URL = "https://www.doithe24.net/BEAddons-LatestVersion.txt";
-    private static final String LICENSE_CHECK_URL = "https://www.doithe24.net/BEAddons-LicenseKey.txt";
     private static final String NEW_VERSION_MESSAGE = "&cBEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons";
     private static final String NO_UPDATE_MESSAGE = "&ePlugin đang ở phiên bản mới nhất.";
 
