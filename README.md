@@ -9,6 +9,7 @@
 - Dễ dàng thêm số lần /back cho người chơi thông qua lệnh `/bea addback <Username> <Amout>`
 - Sử dụng giờ chuẩn quốc tế +7/Ho Chi Minh của Việt Nam.
 - Dễ dàng khởi động lại plugin với lệnh `/bea reload`.
+- Plugin có 1 Permission duy nhất là `beaddons24.admin`
 - Full toàn quyền chỉnh sửa nằm trong file config.yml.
 - Premium plugin được làm riêng cho PlayST.
 ## Hướng dẫn cài:
