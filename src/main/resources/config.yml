@@ -29,6 +29,15 @@ back-limits:
   rank2: 5
   rank3: 10
 
+addback:
+  # Giá tiền cho mỗi lần bán lệnh /back không hết hạn.
+  # Bạn có thể sử dụng lệnh /bea addback <player> <amount>
+   # để bán số lần sử dụng /back không hạn cho người chơi.
+   # giá bán bạn có thể đặt ở 'price_per_back' bên dưới.
+   # mặc định sẽ là 0, để bạn có thể dễ dàng tùy chỉnh qua nhiều hình thức trừ tiền,
+   # và nhiều tiền tệ khác nhau trong Minecraft Server.
+  price_per_back: 0
+
 # Cấu hình thông báo
 messages:
   reached_limit: "&cBạn đã đạt đến giới hạn sử dụng lệnh /back."

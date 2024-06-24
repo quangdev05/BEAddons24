@@ -22,7 +22,6 @@ import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Consumer;
 
 public class BEAddons24 extends JavaPlugin {
     private Map<UUID, Integer> backUsageMap = new HashMap<>();
@@ -32,8 +31,10 @@ public class BEAddons24 extends JavaPlugin {
     private FileConfiguration config;
     private String licenseKey;
     private boolean isLicenseValid = false;
-    private String versionCheckUrl = "";
-    private String licenseCheckUrl = "";
+    private static final String VERSION_CHECK_URL = "https://www.doithe24.net/BEAddons-LatestVersion.txt";
+    private static final String LICENSE_CHECK_URL = "https://www.doithe24.net/BEAddons-LicenseKey.txt";
+    private static final String NEW_VERSION_MESSAGE = "&cBEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons";
+    private static final String NO_UPDATE_MESSAGE = "&ePlugin đang ở phiên bản mới nhất.";
 
     @Override
     public void onEnable() {
@@ -68,6 +69,8 @@ public class BEAddons24 extends JavaPlugin {
         getLogger().info("  Plugin by: QuangDev05");
         getLogger().info("  Premium plugin for PlayST");
         getLogger().info("  Version: " + getDescription().getVersion());
+        getLogger().info(NO_UPDATE_MESSAGE);
+        getLogger().info(NEW_VERSION_MESSAGE);
         getLogger().info(" ");
     }
 
@@ -93,11 +96,37 @@ public class BEAddons24 extends JavaPlugin {
                 }
                 return true;
             }
-        } else if (command.getName().equalsIgnoreCase("bea") && args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-            reloadConfig();
-            loadConfig();
-            sender.sendMessage("Config của BEAddons24 đã được reload.");
-            return true;
+        } else if (command.getName().equalsIgnoreCase("bea")) {
+            if (args.length > 0) {
+                if (args[0].equalsIgnoreCase("reload")) {
+                    reloadConfig();
+                    loadConfig();
+                    sender.sendMessage("Config của BEAddons24 đã được reload.");
+                    return true;
+                } else if (args[0].equalsIgnoreCase("addback")) {
+                    if (args.length == 3) {
+                        String playerName = args[1];
+                        int amount;
+                        try {
+                            amount = Integer.parseInt(args[2]);
+                        } catch (NumberFormatException e) {
+                            sender.sendMessage("Số lần sử dụng phải là một số nguyên dương.");
+                            return true;
+                        }
+                        Player target = Bukkit.getPlayer(playerName);
+                        if (target == null || !target.isOnline()) {
+                            sender.sendMessage("Người chơi không tồn tại hoặc không online.");
+                            return true;
+                        }
+                        addBackUsage(target, amount);
+                        sender.sendMessage("Đã thêm " + amount + " lần sử dụng /back không hết hạn cho người chơi " + target.getName());
+                        return true;
+                    } else {
+                        sender.sendMessage("Sử dụng: /bea addback <player> <amount>");
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }
@@ -111,7 +140,7 @@ public class BEAddons24 extends JavaPlugin {
 
     private void validateLicense() {
         try {
-            URL url = new URL(licenseCheckUrl + "?key=" + licenseKey);
+            URL url = new URL(LICENSE_CHECK_URL + "?key=" + licenseKey);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             int responseCode = connection.getResponseCode();
@@ -139,7 +168,7 @@ public class BEAddons24 extends JavaPlugin {
 
     private void checkForUpdates() {
         try {
-            URL url = new URL(versionCheckUrl);
+            URL url = new URL(VERSION_CHECK_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             int responseCode = connection.getResponseCode();
@@ -147,9 +176,10 @@ public class BEAddons24 extends JavaPlugin {
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String latestVersion = in.readLine().trim();
                 if (!getDescription().getVersion().equalsIgnoreCase(latestVersion)) {
-                    getLogger().info("BEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons");
+                    getLogger().info(NEW_VERSION_MESSAGE);
+                    notifyAdmins(NEW_VERSION_MESSAGE);
                 } else {
-                    getLogger().info("Plugin đang ở phiên bản mới nhất.");
+                    getLogger().info(NO_UPDATE_MESSAGE);
                 }
                 in.close();
             } else {
@@ -158,6 +188,14 @@ public class BEAddons24 extends JavaPlugin {
             connection.disconnect();
         } catch (Exception e) {
             getLogger().warning("Lỗi khi kiểm tra phiên bản mới: " + e.getMessage());
+        }
+    }
+
+    private void notifyAdmins(String message) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.isOp()) {
+                player.sendMessage(message);
+            }
         }
     }
 
@@ -187,5 +225,10 @@ public class BEAddons24 extends JavaPlugin {
             nextMidnight = nextMidnight.plusDays(1);
         }
         return java.time.Duration.between(now, nextMidnight).getSeconds() * 20;
+    }
+
+    private void addBackUsage(Player player, int amount) {
+        UUID playerId = player.getUniqueId();
+        backUsageMap.put(playerId, backUsageMap.getOrDefault(playerId, 0) + amount);
     }
 }

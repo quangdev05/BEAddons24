@@ -9,7 +9,14 @@ website: https://ayo.so/quangdev05
 
 commands:
   bea:
-    description: Reload BEAddons24 config
-    usage: /bea reload
-    permission: bea.reload
+    description: Reload plugin configuration or manage back command usages.
+    usage: /<command> <reload | addback> [player] [amount]
+    aliases: [beaddons, beaddons24]
+    permission: beaddons24.admin
+    permission-message: You do not have permission to use this command.
+
+permissions:
+  beaddons24.admin:
+    description: Allows access to all BEAddons24 administrative commands.
+    default: op
 
