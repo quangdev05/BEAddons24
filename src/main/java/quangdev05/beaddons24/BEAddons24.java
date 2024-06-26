@@ -31,11 +31,7 @@ public class BEAddons24 extends JavaPlugin {
     private FileConfiguration config;
     private String licenseKey;
     private boolean isLicenseValid = false;
-<<<<<<< HEAD
     private static final String NEW_VERSION_MESSAGE = "&aBEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons";
-=======
-    private static final String NEW_VERSION_MESSAGE = "&cBEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons";
->>>>>>> 1e21321df6e18bae270a83572f349af39c51fb2d
     private static final String NO_UPDATE_MESSAGE = "&ePlugin đang ở phiên bản mới nhất.";
 
     @Override
