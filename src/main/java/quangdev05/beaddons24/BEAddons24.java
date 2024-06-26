@@ -31,9 +31,9 @@ public class BEAddons24 extends JavaPlugin {
     private FileConfiguration config;
     private String licenseKey;
     private boolean isLicenseValid = false;
-    private static final String VERSION_CHECK_URL = "https://www.doithe24.net/BEAddons-LatestVersion.txt";
-    private static final String LICENSE_CHECK_URL = "https://www.doithe24.net/BEAddons-LicenseKey.txt";
-    private static final String NEW_VERSION_MESSAGE = "&cBEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons";
+    private static final String VERSION_CHECK_URL = "";
+    private static final String LICENSE_CHECK_URL = "";
+    private static final String NEW_VERSION_MESSAGE = "&aBEAddons đã có phiên bản mới, tải ngay tại: https://github.com/QuangDev05/BEAddons";
     private static final String NO_UPDATE_MESSAGE = "&ePlugin đang ở phiên bản mới nhất.";
 
     @Override
@@ -69,8 +69,6 @@ public class BEAddons24 extends JavaPlugin {
         getLogger().info("  Plugin by: QuangDev05");
         getLogger().info("  Premium plugin for PlayST");
         getLogger().info("  Version: " + getDescription().getVersion());
-        getLogger().info(NO_UPDATE_MESSAGE);
-        getLogger().info(NEW_VERSION_MESSAGE);
         getLogger().info(" ");
     }
 
@@ -97,7 +95,16 @@ public class BEAddons24 extends JavaPlugin {
                 return true;
             }
         } else if (command.getName().equalsIgnoreCase("bea")) {
-            if (args.length > 0) {
+            if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
+                sender.sendMessage("§a--- BEAddons24 Help ---");
+                sender.sendMessage("§b/bea reload §7- Reload cấu hình plugin");
+                sender.sendMessage("§b/bea addback <player> <amount> §7- Thêm số lần sử dụng lệnh /back không hết hạn cho người chơi");
+                sender.sendMessage("§b/back §7- Sử dụng lệnh /back với giới hạn");
+                sender.sendMessage("§ePlugin by: QuangDev05");
+                sender.sendMessage("§eVersion: " + getDescription().getVersion());
+                sender.sendMessage("§eLicense Key: " + (isLicenseValid ? "§aHợp lệ" : "§cKhông hợp lệ"));
+                return true;
+            } else if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("reload")) {
                     reloadConfig();
                     loadConfig();
@@ -131,6 +138,7 @@ public class BEAddons24 extends JavaPlugin {
         return false;
     }
 
+
     private void loadConfig() {
         licenseKey = config.getString("license_key", "");
         if (!licenseKey.isEmpty()) {
@@ -140,18 +148,22 @@ public class BEAddons24 extends JavaPlugin {
 
     private void validateLicense() {
         try {
-            URL url = new URL(LICENSE_CHECK_URL + "?key=" + licenseKey);
+            URL url = new URL(LICENSE_CHECK_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String response = in.readLine();
-                if (response.equalsIgnoreCase("valid")) {
-                    isLicenseValid = true;
-                    getLogger().info("License key đã được xác thực.");
-                } else {
-                    isLicenseValid = false;
+                String line;
+                isLicenseValid = false;
+                while ((line = in.readLine()) != null) {
+                    if (line.trim().equalsIgnoreCase(licenseKey)) {
+                        isLicenseValid = true;
+                        getLogger().info("License key đã được xác thực.");
+                        break;
+                    }
+                }
+                if (!isLicenseValid) {
                     getLogger().warning("License key không hợp lệ. Plugin sẽ không hoạt động.");
                 }
                 in.close();
@@ -165,6 +177,7 @@ public class BEAddons24 extends JavaPlugin {
             isLicenseValid = false;
         }
     }
+
 
     private void checkForUpdates() {
         try {

@@ -6,7 +6,7 @@
 
     <groupId>quangdev05</groupId>
     <artifactId>BEAddons24</artifactId>
-    <version>Premium | 1.1.0 Beta</version>
+    <version>Premium | 1.1.1 Beta</version>
     <packaging>jar</packaging>
 
     <name>BEAddons24</name>
@@ -72,17 +72,26 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>3.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
             <groupId>net.essentialsx</groupId>
             <artifactId>EssentialsX</artifactId>
             <version>2.19.0</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
         <groupId>net.luckperms</groupId>
         <artifactId>api</artifactId>
         <version>5.4</version>
         <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.destroystokyo.paper</groupId>
             <artifactId>paper-api</artifactId>
