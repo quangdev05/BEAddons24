@@ -22,4 +22,4 @@
 - B2. Thả file .jar vào file plugin của server.
 - B3. Khởi chạy server.
 - B4. Vô file config của plugin, nhập License Key và save lại.
-- B5. /bea reload để plugin chạy.
+- B5. Khởi động lại server và sử dụng plugin.
