@@ -6,6 +6,7 @@
 - Website: https://ayo.so/quangdev05
 ## Thông tin:
 - Tùy chỉnh số lần /back của plugin Essentialsx trong một ngày cho rank Luckperm.
+- `/bea help` Để xem hướng dẫn và thông tin plugin.
 - Dễ dàng thêm số lần /back cho người chơi thông qua lệnh `/bea addback <Username> <Amout>`
 - Sử dụng giờ chuẩn quốc tế +7/Ho Chi Minh của Việt Nam.
 - Dễ dàng khởi động lại plugin với lệnh `/bea reload`.
