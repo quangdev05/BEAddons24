@@ -1,8 +1,9 @@
 # BEAddons:
 - Tác giả: QuangDev05 [GnauQ]
-- Facebook: https://www.facebook.com/quangdev05.2024
+- Facebook: https://www.facebook.com/quangdev05
+- Facebook 2: https://www.facebook.com/quangdev05.2024
 - Discord: quangdev05
-- Discord Community: https://discord.gg/MdgvJnegbM
+- Discord Community: https://discord.gg/HsSUVGSc3c
 - Website: https://ayo.so/quangdev05
 ## Thông tin:
 - Tùy chỉnh số lần /back của plugin Essentialsx trong một ngày cho rank Luckperm.
