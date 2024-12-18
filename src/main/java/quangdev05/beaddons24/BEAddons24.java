@@ -43,7 +43,6 @@ public class BEAddons24 extends JavaPlugin {
         luckPerms = LuckPermsProvider.get();
         essentials = (IEssentials) Bukkit.getPluginManager().getPlugin("Essentials");
 
-        // Schedule the reset task at 23:59 every day
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -51,7 +50,6 @@ public class BEAddons24 extends JavaPlugin {
             }
         }.runTaskTimer(this, getInitialDelay(), 24 * 60 * 60 * 20);
 
-        // Check for updates if enabled
         if (config.getBoolean("update-checker", true)) {
             checkForUpdates();
         }
@@ -85,7 +83,6 @@ public class BEAddons24 extends JavaPlugin {
                 int currentUsage = backUsageMap.getOrDefault(playerId, 0);
                 if (currentUsage < maxBackUsage) {
                     backUsageMap.put(playerId, currentUsage + 1);
-                    // Execute EssentialsX /back command
                     Bukkit.dispatchCommand(sender, "essentials:back");
                 } else {
                     player.sendMessage(config.getString("messages.reached_limit"));
@@ -220,7 +217,7 @@ public class BEAddons24 extends JavaPlugin {
                 }
             }
         }
-        return config.getInt("back-limits.default", 1); // default limit
+        return config.getInt("back-limits.default", 1); 
     }
 
     private void resetBackUsage() {
